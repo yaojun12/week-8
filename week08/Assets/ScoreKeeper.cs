@@ -1,18 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class ScoreKeeper : MonoBehaviour
+public class ScoreKeeper
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    public int PlayerScore { get; private set; }
+    public int OpponentScore { get; private set; }
+
+    
+    public void AddScoreToPlayer(int points)
     {
-        
+        PlayerScore += points;
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    public void AddScoreToOpponent(int points)
     {
-        
+        OpponentScore += points;
+    }
+
+    
+    public void SubtractScoreFromPlayer(int points)
+    {
+        PlayerScore = Math.Max(PlayerScore - points, 0);
+    }
+
+    
+    public void SubtractScoreFromOpponent(int points)
+    {
+        OpponentScore = Math.Max(OpponentScore - points, 0);
+    }
+
+    
+    public void ResetScores()
+    {
+        PlayerScore = 0;
+        OpponentScore = 0;
     }
 }
